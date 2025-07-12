@@ -1,8 +1,7 @@
-
-
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Login from './components/Login';
+import CalendarPage from './components/CalendarPage';
 
 
 function AppRoutes() {
@@ -16,6 +15,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={isLoggedIn ? <Navigate to="/calendar" /> : <Login />} />
+      <Route path="/calendar" element={isLoggedIn ? <CalendarPage onLogout={() => setIsLoggedIn(false)} /> : <Navigate to="/" />} />
     </Routes>
   );
 }
